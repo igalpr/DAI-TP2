@@ -2,96 +2,108 @@
 <LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical">
-    <TextClock
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aprete una imagen para que los que se encuentran en sus costados y el del medio se cambien"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <ImageButton
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:id="@+id/Boton1"
-        android:scaleType="center"
-        android:onClick="Randomizar"
-        />
-    <ImageButton
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:scaleType="center"
-        android:id="@+id/Boton2"
-        android:onClick="Randomizar"
-        />
-    <ImageButton
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:scaleType="center"
-        android:id="@+id/Boton3"
-        android:onClick="Randomizar"
-        />
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="ingrese su nombre"
+            android:inputType="text"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aceptar"
+            android:onClick="habilitar"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:id="@+id/Boton1"
+            android:scaleType="centerInside"
+            android:onClick="CambiarBotones"
+            />
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:scaleType="centerInside"
+            android:id="@+id/Boton2"
+            android:onClick="CambiarBotones"
+            />
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:scaleType="centerInside"
+            android:id="@+id/Boton3"
+            android:onClick="CambiarBotones"
+            />
 </LinearLayout>
 <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:id="@+id/Boton4"
-            android:onClick="Randomizar"
+            android:onClick="CambiarBotones"
             />
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:id="@+id/Boton5"
-            android:onClick="Randomizar"
+            android:onClick="CambiarBotones"
             />
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:id="@+id/Boton6"
-            android:onClick="Randomizar"
+            android:onClick="CambiarBotones"
             />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:id="@+id/Boton7"
-            android:onClick="Randomizar"
+            android:onClick="CambiarBotones"
             />
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             android:id="@+id/Boton8"
-            android:onClick="Randomizar"
+            android:onClick="CambiarBotones"
             />
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:id="@+id/Boton9"
-            android:scaleType="center"
-            android:onClick="Randomizar"
+            android:scaleType="centerInside"
+            android:onClick="CambiarBotones"
             />
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:textColor="#000000"
-        android:text="Todos los botones tienen que estar iguales para ganar"/>
+
 </LinearLayout>
