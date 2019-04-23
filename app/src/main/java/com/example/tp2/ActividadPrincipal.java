@@ -1,23 +1,46 @@
 package com.example.tp2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.text.TextUtilsCompat;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class ActividadPrincipal extends Activity {
 
+    public EditText editTextNombre;
+    public EditText editTextResultado;
+    public Button Nombre;
+    public Button Verificacion;
     public ImageButton[] arrBotones;
+    public TextView textViewVerificar;
+    public int ResultadoValidacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal);
+        textViewVerificar = findViewById(R.id.Verificar);
+        editTextNombre=findViewById(R.id.EditTextNombre);
+        Nombre=findViewById(R.id.ButtonNombre);
+        editTextResultado=findViewById(R.id.RespuestaVerificacion);
+        Verificacion=findViewById(R.id.ButonVerificacion);
+        int numeroUno;
+        int numeroDos;
+        Random GenerarRandom;
+        GenerarRandom = new Random();
+        numeroUno = GenerarRandom.nextInt(11);
+        numeroDos = GenerarRandom.nextInt(11);
+        ResultadoValidacion=numeroUno+numeroDos;
+        textViewVerificar.setText(numeroUno + "+" + numeroDos);
         arrBotones=new ImageButton[9];
-
         arrBotones[0]=(ImageButton)findViewById(R.id.Boton1);
         arrBotones[1]=(ImageButton)findViewById(R.id.Boton2);
         arrBotones[2]=(ImageButton)findViewById(R.id.Boton3);
@@ -30,6 +53,7 @@ public class ActividadPrincipal extends Activity {
         Randomizer();
 
     }
+
     void Randomizer()
     {
         boolean VolverAGenerarAzar;
@@ -462,6 +486,21 @@ public class ActividadPrincipal extends Activity {
                 }
                 break;
         }
-
+        boolean Ganaste=true;
+        Drawable.ConstantState imagenA=arrBotones[1].getDrawable().getConstantState();
+        for(ImageButton aux : arrBotones)
+        {
+            if (aux.getDrawable().getConstantState() != imagenA)
+            {
+                Ganaste=false;
+            }
+        }
+        if(Ganaste==true)
+        {
+            Intent Ganador;
+            Ganador=new Intent(this,Ganaste.class);
+            startActivity(Ganador);
+        }
     }
+
 }

@@ -14,12 +14,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="ingrese su nombre"
+            android:id="@+id/EditTextNombre"
             android:inputType="text"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Aceptar"
+            android:id="@+id/ButtonNombre"
             android:onClick="habilitar"
             android:textAlignment="center"/>
 
@@ -35,6 +37,7 @@
             android:id="@+id/Boton1"
             android:scaleType="centerInside"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -42,6 +45,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton2"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -49,6 +53,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton3"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
 </LinearLayout>
 <LinearLayout
@@ -62,6 +67,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton4"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -69,6 +75,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton5"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -76,6 +83,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton6"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
     </LinearLayout>
     <LinearLayout
@@ -89,6 +97,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton7"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -96,6 +105,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton8"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -103,7 +113,30 @@
             android:id="@+id/Boton9"
             android:scaleType="centerInside"
             android:onClick="CambiarBotones"
+            android:saveEnabled="false"
             />
     </LinearLayout>
-
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+     <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:textSize="30dp"
+     android:id="@+id/Verificar"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="respuesta"
+        android:id="@+id/RespuestaVerificacion"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ButonVerificacion"
+        android:text="verificar"
+        android:onClick="VerificarInformacion"/>
+    </LinearLayout>
 </LinearLayout>
