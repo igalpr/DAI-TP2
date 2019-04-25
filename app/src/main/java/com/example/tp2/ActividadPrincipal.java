@@ -27,6 +27,7 @@ public class ActividadPrincipal extends Activity {
     public int CantidadMovimientos;
     public int numeroUno;
     public int numeroDos;
+    public boolean Ganaste;
     public TextView textViewCantidadMovimientos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class ActividadPrincipal extends Activity {
         arrBotones=new ImageButton[9];
        AsignarBotones();
         Randomizer();
+        Ganaste=true;
         for (int i=0;i<arrBotones.length;i++)
         {
 
@@ -131,6 +133,15 @@ public class ActividadPrincipal extends Activity {
             }
         }
     }
+    void ManeraRandom(View vista) {
+        Random GenerarRandom;
+        GenerarRandom = new Random();
+        int numeroRandom;
+        numeroRandom = GenerarRandom.nextInt(10);
+        do {
+            CambiarImagenes(arrBotones[numeroRandom].getId());
+        }while(Ganaste!=true);
+    }
     int AsignarBoton(int IdBotonAasignar)
     {
         Random GenerarRandom;
@@ -151,10 +162,17 @@ public class ActividadPrincipal extends Activity {
     }
     public void CambiarBotones(View VistaRecibida)
     {
-        CantidadMovimientos++;
-        textViewCantidadMovimientos.setText(""+CantidadMovimientos);
         ImageButton BotonSeleccionado;
         BotonSeleccionado=(ImageButton) VistaRecibida;
+        int id;
+        id=BotonSeleccionado.getId();
+        CambiarImagenes(id);
+    }
+    public void CambiarImagenes(int id)
+    {
+        CantidadMovimientos++;
+        textViewCantidadMovimientos.setText(""+CantidadMovimientos);
+
         //Le asigno el codigo de las 9 imagenes a 9 variables
         Drawable.ConstantState CodigoImagenBoton1;
         CodigoImagenBoton1=arrBotones[0].getDrawable().getConstantState();
@@ -177,7 +195,7 @@ public class ActividadPrincipal extends Activity {
         //obtengo el codigo de la imagen de leo y la guardo en una variable
         Drawable.ConstantState CodigoIma1;
         CodigoIma1= ContextCompat.getDrawable(this,R.drawable.leo).getConstantState();
-        switch (BotonSeleccionado.getId())
+        switch (id)
         {
 
             case R.id.Boton1:
@@ -516,7 +534,7 @@ public class ActividadPrincipal extends Activity {
                 }
                 break;
         }
-        boolean Ganaste=true;
+
         Drawable.ConstantState imagenA=arrBotones[1].getDrawable().getConstantState();
         for(ImageButton aux : arrBotones)
         {
