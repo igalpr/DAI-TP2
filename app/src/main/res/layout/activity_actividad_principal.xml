@@ -37,7 +37,7 @@
             android:id="@+id/Boton1"
             android:scaleType="centerInside"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -45,7 +45,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton2"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -53,7 +53,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton3"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
 </LinearLayout>
 <LinearLayout
@@ -67,7 +67,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton4"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -75,7 +75,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton5"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -83,7 +83,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton6"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
     </LinearLayout>
     <LinearLayout
@@ -97,7 +97,7 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton7"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+            android:hapticFeedbackEnabled="false"
             />
         <ImageButton
             android:layout_width="130dp"
@@ -105,17 +105,26 @@
             android:scaleType="centerInside"
             android:id="@+id/Boton8"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
-            />
+            android:hapticFeedbackEnabled="false"/>
         <ImageButton
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:id="@+id/Boton9"
             android:scaleType="centerInside"
             android:onClick="CambiarBotones"
-            android:saveEnabled="false"
+
             />
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cantidad de movimientos"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:id="@+id/CantidadMovimientos"/>
     <LinearLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -138,5 +147,11 @@
         android:id="@+id/ButonVerificacion"
         android:text="verificar"
         android:onClick="VerificarInformacion"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/ImagenVerificacion"
+            android:scaleType="centerInside"
+            />
     </LinearLayout>
 </LinearLayout>

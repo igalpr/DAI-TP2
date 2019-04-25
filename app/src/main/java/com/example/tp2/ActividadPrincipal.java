@@ -10,37 +10,60 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
 
 public class ActividadPrincipal extends Activity {
 
-    public EditText editTextNombre;
+    public String NombreJugador;
     public EditText editTextResultado;
     public Button Nombre;
     public Button Verificacion;
     public ImageButton[] arrBotones;
     public TextView textViewVerificar;
     public int ResultadoValidacion;
+    public int CantidadMovimientos;
+    public int numeroUno;
+    public int numeroDos;
+    public TextView textViewCantidadMovimientos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal);
+        AsignarSegunIDs();
+        GenerarNumeroRandom();
+        arrBotones=new ImageButton[9];
+       AsignarBotones();
+        Randomizer();
+        for (int i=0;i<arrBotones.length;i++)
+        {
+
+            arrBotones[i].setEnabled(false);
+        }
+    }
+    void AsignarSegunIDs()
+    {
         textViewVerificar = findViewById(R.id.Verificar);
-        editTextNombre=findViewById(R.id.EditTextNombre);
+        CantidadMovimientos=0;
         Nombre=findViewById(R.id.ButtonNombre);
         editTextResultado=findViewById(R.id.RespuestaVerificacion);
         Verificacion=findViewById(R.id.ButonVerificacion);
-        int numeroUno;
-        int numeroDos;
+        textViewCantidadMovimientos=findViewById(R.id.CantidadMovimientos);
+        textViewCantidadMovimientos.setText(""+CantidadMovimientos);
+    }
+    void GenerarNumeroRandom()
+    {
         Random GenerarRandom;
         GenerarRandom = new Random();
         numeroUno = GenerarRandom.nextInt(11);
         numeroDos = GenerarRandom.nextInt(11);
         ResultadoValidacion=numeroUno+numeroDos;
         textViewVerificar.setText(numeroUno + "+" + numeroDos);
-        arrBotones=new ImageButton[9];
+    }
+    void AsignarBotones()
+    {
         arrBotones[0]=(ImageButton)findViewById(R.id.Boton1);
         arrBotones[1]=(ImageButton)findViewById(R.id.Boton2);
         arrBotones[2]=(ImageButton)findViewById(R.id.Boton3);
@@ -50,8 +73,13 @@ public class ActividadPrincipal extends Activity {
         arrBotones[6]=(ImageButton)findViewById(R.id.Boton7);
         arrBotones[7]=(ImageButton)findViewById(R.id.Boton8);
         arrBotones[8]=(ImageButton)findViewById(R.id.Boton9);
-        Randomizer();
-
+    }
+    void habilitar(View Vista)
+    {
+        EditText editTextNombre;
+        editTextNombre=findViewById(R.id.EditTextNombre);
+        NombreJugador=editTextNombre.getText().toString();
+        editTextResultado.requestFocus();
     }
 
     void Randomizer()
@@ -123,6 +151,8 @@ public class ActividadPrincipal extends Activity {
     }
     public void CambiarBotones(View VistaRecibida)
     {
+        CantidadMovimientos++;
+        textViewCantidadMovimientos.setText(""+CantidadMovimientos);
         ImageButton BotonSeleccionado;
         BotonSeleccionado=(ImageButton) VistaRecibida;
         //Le asigno el codigo de las 9 imagenes a 9 variables
@@ -497,9 +527,39 @@ public class ActividadPrincipal extends Activity {
         }
         if(Ganaste==true)
         {
+            Bundle MiBunedle;
+            MiBunedle=new Bundle();
+            MiBunedle.putString("NombreJugador",NombreJugador);
+            Bundle Movimientos;
+            Movimientos=new Bundle();
+            Movimientos.putInt("CantidadMovimientos",CantidadMovimientos);
             Intent Ganador;
             Ganador=new Intent(this,Ganaste.class);
+            Ganador.putExtras(MiBunedle);
+            Ganador.putExtras(Movimientos);
             startActivity(Ganador);
+        }
+    }
+    void VerificarInformacion(View vista)
+    {
+        int Resultado;
+        Resultado=Integer.valueOf(editTextResultado.getText().toString());
+        ImageView VerificarVeracidad;
+        VerificarVeracidad=findViewById(R.id.ImagenVerificacion);
+        if(Resultado==ResultadoValidacion && NombreJugador!=null)
+        {
+            VerificarVeracidad.setImageResource(R.drawable.tic);
+            for (int i=0;i<arrBotones.length;i++)
+            {
+
+                arrBotones[i].setEnabled(true);
+            }
+            Verificacion.setEnabled(false);
+            editTextResultado.setEnabled(false);
+        }
+        else
+        {
+            VerificarVeracidad.setImageResource(R.drawable.cruz);
         }
     }
 
