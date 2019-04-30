@@ -166,7 +166,8 @@
            android:layout_height="wrap_content"
            android:text="resolver de manera random"
            android:textSize="25dp"
-           android:onClick="ManeraRandom"
-           android:visibility="invisible"/>
+           android:onClick="ResolverJuegoRandom"
+           android:visibility="invisible"
+           android:id="@+id/ResolverRandom"/>
    </LinearLayout>
 </LinearLayout>

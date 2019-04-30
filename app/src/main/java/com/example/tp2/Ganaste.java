@@ -20,7 +20,7 @@ public class Ganaste extends Activity {
         int CantMov=CantidadMovimientos.getInt("CantidadMovimientos");
         TextView textViewGanaste;
         textViewGanaste=findViewById(R.id.TextViewGanaste);
-        textViewGanaste.setText("Felicidades al jugaor "+NombreJugador+" ganaste el juego en "+CantMov+" movimientos");
+        textViewGanaste.setText("Felicidades al jugador "+NombreJugador+" ganaste el juego en "+CantMov+" movimientos");
     }
     void Reiniciar(View Vista)
     {

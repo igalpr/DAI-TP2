@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.text.TextUtilsCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,19 @@ public class ActividadPrincipal extends Activity {
             arrBotones[i].setEnabled(false);
         }
     }
+    public void ResolverJuegoRandom(View view) {
+        Random GenerarRandom;
+        GenerarRandom = new Random();
+        int numeroRandom;
+        numeroRandom = GenerarRandom.nextInt(9);
+        int contandor;
+        Contador=0;
+        do {
+            Ganaste=true;
+            CambiarImagenes(arrBotones[numeroRandom].getId());
+            Contador++;
+        }while(Ganaste!=true&&Contador<10);
+    }
     void AsignarSegunIDs()
     {
         textViewVerificar = findViewById(R.id.Verificar);
@@ -66,15 +80,15 @@ public class ActividadPrincipal extends Activity {
     }
     void AsignarBotones()
     {
-        arrBotones[0]=(ImageButton)findViewById(R.id.Boton1);
-        arrBotones[1]=(ImageButton)findViewById(R.id.Boton2);
-        arrBotones[2]=(ImageButton)findViewById(R.id.Boton3);
-        arrBotones[3]=(ImageButton)findViewById(R.id.Boton4);
-        arrBotones[4]=(ImageButton)findViewById(R.id.Boton5);
-        arrBotones[5]=(ImageButton)findViewById(R.id.Boton6);
-        arrBotones[6]=(ImageButton)findViewById(R.id.Boton7);
-        arrBotones[7]=(ImageButton)findViewById(R.id.Boton8);
-        arrBotones[8]=(ImageButton)findViewById(R.id.Boton9);
+        arrBotones[0]=findViewById(R.id.Boton1);
+        arrBotones[1]=findViewById(R.id.Boton2);
+        arrBotones[2]=findViewById(R.id.Boton3);
+        arrBotones[3]=findViewById(R.id.Boton4);
+        arrBotones[4]=findViewById(R.id.Boton5);
+        arrBotones[5]=findViewById(R.id.Boton6);
+        arrBotones[6]=findViewById(R.id.Boton7);
+        arrBotones[7]=findViewById(R.id.Boton8);
+        arrBotones[8]=findViewById(R.id.Boton9);
     }
     void habilitar(View Vista)
     {
@@ -133,15 +147,7 @@ public class ActividadPrincipal extends Activity {
             }
         }
     }
-    void ManeraRandom(View vista) {
-        Random GenerarRandom;
-        GenerarRandom = new Random();
-        int numeroRandom;
-        numeroRandom = GenerarRandom.nextInt(10);
-        do {
-            CambiarImagenes(arrBotones[numeroRandom].getId());
-        }while(Ganaste!=true);
-    }
+
     int AsignarBoton(int IdBotonAasignar)
     {
         Random GenerarRandom;
@@ -195,6 +201,7 @@ public class ActividadPrincipal extends Activity {
         //obtengo el codigo de la imagen de leo y la guardo en una variable
         Drawable.ConstantState CodigoIma1;
         CodigoIma1= ContextCompat.getDrawable(this,R.drawable.leo).getConstantState();
+        Log.d("Prueba","05");
         switch (id)
         {
 
@@ -536,13 +543,18 @@ public class ActividadPrincipal extends Activity {
         }
 
         Drawable.ConstantState imagenA=arrBotones[1].getDrawable().getConstantState();
+        Ganaste=true;
         for(ImageButton aux : arrBotones)
         {
             if (aux.getDrawable().getConstantState() != imagenA)
             {
                 Ganaste=false;
+                Log.d("Prueba","10");
             }
+
         }
+
+
         if(Ganaste==true)
         {
             Bundle MiBunedle;
@@ -566,11 +578,15 @@ public class ActividadPrincipal extends Activity {
         VerificarVeracidad=findViewById(R.id.ImagenVerificacion);
         if(Resultado==ResultadoValidacion && NombreJugador!=null)
         {
+            Button Random;
+            Random=findViewById(R.id.ResolverRandom);
+            Random.setVisibility(1);
             VerificarVeracidad.setImageResource(R.drawable.tic);
             for (int i=0;i<arrBotones.length;i++)
             {
 
                 arrBotones[i].setEnabled(true);
+
             }
             Verificacion.setEnabled(false);
             editTextResultado.setEnabled(false);
@@ -580,5 +596,4 @@ public class ActividadPrincipal extends Activity {
             VerificarVeracidad.setImageResource(R.drawable.cruz);
         }
     }
-
 }
